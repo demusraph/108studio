@@ -66,10 +66,13 @@
     /* ── HERO ── */
     #hero {
       position: relative;
-      height: 100svh;
+      min-height: 100svh;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
       overflow: hidden;
+      /* push content up enough so scroll-cue (≈100px) never overlaps */
+      padding-top: 5rem;
+      padding-bottom: 7rem;
     }
 
     .hero-bg {
@@ -168,20 +171,22 @@
     }
 
     .scroll-cue {
-      position: absolute; bottom: 2.5rem; left: 50%;
+      position: absolute; bottom: 1.8rem; left: 50%;
       transform: translateX(-50%);
-      display: flex; flex-direction: column; align-items: center; gap: .5rem;
+      display: flex; flex-direction: column; align-items: center; gap: .4rem;
       opacity: 0;
       animation: fadeUp .8s 1.8s forwards;
+      pointer-events: none;
     }
+    @media (max-height: 640px) { .scroll-cue { display: none; } }
     .scroll-cue span {
-      font-size: .65rem;
+      font-size: .6rem;
       letter-spacing: .25em;
       text-transform: uppercase;
       color: rgba(244,240,232,.3);
     }
     .scroll-line {
-      width: 1px; height: 50px;
+      width: 1px; height: 36px;
       background: linear-gradient(to bottom, rgba(200,169,110,.6), transparent);
       animation: scrollPulse 2s 2s infinite;
     }
